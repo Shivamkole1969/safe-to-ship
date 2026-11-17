@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shivamkole1969.github.io/safe-to-ship/sitemap.xml

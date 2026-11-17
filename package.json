@@ -1,0 +1,39 @@
+{
+  "name": "safe-to-ship",
+  "version": "0.1.0",
+  "description": "Is your AI-built app safe to ship? One command checks a Lovable, Bolt, Cursor, Replit or Claude Code project for leaked keys, open Supabase/Firebase data, missing launch basics and app-store blockers.",
+  "bin": {
+    "safe-to-ship": "bin/cli.js"
+  },
+  "main": "src/index.js",
+  "files": [
+    "bin",
+    "src",
+    "action.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/scan.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "security",
+    "supabase",
+    "firebase",
+    "lovable",
+    "bolt",
+    "vibe-coding",
+    "launch-checklist",
+    "secrets",
+    "row-level-security",
+    "cli"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shivamkole1969/safe-to-ship.git"
+  }
+}

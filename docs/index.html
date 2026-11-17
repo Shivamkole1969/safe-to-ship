@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch checklist for AI-built apps + free safety checker | safe-to-ship</title>
+<meta name="description" content="Before you share your Lovable, Bolt, Cursor or Claude Code app: a free one-command checker for leaked keys and open Supabase/Firebase data, plus the full launch checklist for security, costs, SEO, legal pages and the app stores.">
+<meta property="og:title" content="Is your AI-built app safe to ship?">
+<meta property="og:description" content="Free one-command checker + the launch checklist for Lovable, Bolt, Cursor and Claude Code apps.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shivamkole1969.github.io/safe-to-ship/">
+<meta property="og:image" content="https://shivamkole1969.github.io/safe-to-ship/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://shivamkole1969.github.io/safe-to-ship/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:">
+<style>
+:root{--bg:#F7F8F6;--panel:#FFFFFF;--ink:#14201B;--muted:#56645E;--line:#DCE3DF;--accent:#0B7A5C;--soft:#E1F1EB;--crit:#B42318;--code:#EEF2EF;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1412;--panel:#151E1B;--ink:#E5EEEA;--muted:#9AABA4;--line:#26332E;--accent:#3FCB9E;--soft:#17372D;--crit:#F07167;--code:#1B2622;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1412;--panel:#151E1B;--ink:#E5EEEA;--muted:#9AABA4;--line:#26332E;--accent:#3FCB9E;--soft:#17372D;--crit:#F07167;--code:#1B2622;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:28px 16px 56px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.15;margin:.2em 0 .3em;letter-spacing:-.01em}
+h2{font-size:1.35rem;margin:2.2em 0 .6em}
+h3{font-size:1.05rem;margin:1.4em 0 .4em}
+p,li{color:var(--ink)}
+.lead{font-size:1.1rem;color:var(--muted);max-width:640px}
+.cmd{display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 12px 12px 16px;margin:20px 0 8px;overflow-x:auto}
+.cmd code{font:15px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap;flex:1}
+button{font:inherit;font-size:.9rem;border:0;border-radius:8px;padding:8px 14px;background:var(--accent);color:#fff;cursor:pointer;white-space:nowrap}
+.small{color:var(--muted);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card b{display:block;margin-bottom:4px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;background:var(--code);padding:1px 5px;border-radius:4px}
+ul.check{list-style:none;padding:0;margin:0}
+ul.check li{padding:10px 0 10px 34px;border-top:1px solid var(--line);position:relative}
+ul.check li:first-child{border-top:0}
+ul.check input{position:absolute;left:4px;top:13px;width:18px;height:18px;accent-color:var(--accent)}
+.crit{color:var(--crit);font-weight:600}
+a{color:var(--accent)}
+.box{background:var(--soft);border-radius:10px;padding:14px 16px;margin:18px 0}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="small">Free and open source · MIT</p>
+  <h1>Is your AI-built app safe to ship?</h1>
+  <p class="lead">You built it with Lovable, Bolt, Cursor, Replit or Claude Code. Before you share the link, run one command. It finds the mistakes that leak user data, burn your API credit or get you rejected by the app stores, and tells you the exact fix.</p>
+  <div class="cmd"><code id="cmd">npx github:Shivamkole1969/safe-to-ship</code><button type="button" id="copy">Copy</button></div>
+  <p class="small">Run it inside your project folder (Node 18+). Nothing to install, no account, nothing uploaded. <a href="https://github.com/Shivamkole1969/safe-to-ship">Source on GitHub</a>.</p>
+
+  <div class="grid">
+    <div class="card"><b>Leaked keys</b>Supabase service_role, OpenAI, Anthropic, Stripe, AWS and more, plus secrets hidden behind <code>VITE_</code> or <code>NEXT_PUBLIC_</code>.</div>
+    <div class="card"><b>Open databases</b>Supabase tables with Row Level Security off, <code>using (true)</code> write policies, Firebase rules left in test mode.</div>
+    <div class="card"><b>Runaway AI bills</b>Server routes that call paid AI APIs with no login check or rate limit.</div>
+    <div class="card"><b>Launch and stores</b>Template titles, missing share image and sitemap, privacy policy, Google Play target API, iOS permission texts.</div>
+  </div>
+
+  <h2>The launch checklist for AI-built apps</h2>
+  <p>The tool checks what it can see in your code. This list covers the rest. Tick items as you go: the ticks stay in this browser only.</p>
+
+  <h3>1. Security: before anyone else uses it</h3>
+  <ul class="check" data-list="sec">
+    <li><input type="checkbox"><span class="crit">Row Level Security is on for every Supabase table</span> in the public schema, with a policy per action. Check Dashboard > Advisors > Security Advisor; fix every "RLS disabled" item. <a href="https://supabase.com/docs/guides/database/postgres/row-level-security">Supabase RLS guide</a></li>
+    <li><input type="checkbox"><span class="crit">Only the anon / publishable key is in the browser.</span> The service_role key and every AI or payment secret live in server code or Edge Functions.</li>
+    <li><input type="checkbox">No policy uses <code>true</code> for insert, update or delete. Writes are tied to the user: <code>with check (auth.uid() = user_id)</code>.</li>
+    <li><input type="checkbox">Firebase: rules are not in test mode; reads and writes require <code>request.auth</code>.</li>
+    <li><input type="checkbox"><code>.env</code> is in <code>.gitignore</code> and was never committed. If it was, rotate every key in it: deleting the file does not remove it from git history.</li>
+    <li><input type="checkbox">User uploads sit in a private storage bucket and are served with signed URLs.</li>
+    <li><input type="checkbox">Sign-up has email confirmation or a CAPTCHA, so bots can't create thousands of accounts.</li>
+    <li><input type="checkbox">Test as a stranger: open the app in a private window, log in as a second user, and try to see or edit the first user's data by changing IDs in the URL.</li>
+  </ul>
+
+  <h3>2. Money: so a bug can't empty your account</h3>
+  <ul class="check" data-list="money">
+    <li><input type="checkbox">A monthly spend limit is set at every AI provider (OpenAI, Anthropic, Google) and on your hosting.</li>
+    <li><input type="checkbox">Every route that calls a paid API checks the user and has a per-user rate limit.</li>
+    <li><input type="checkbox">Billing alerts go to an email you read.</li>
+    <li><input type="checkbox">You know which free-tier limit you will hit first (database size, function calls, bandwidth). Free Supabase projects pause after a week without activity.</li>
+  </ul>
+
+  <h3>3. Data: can you recover from a mistake?</h3>
+  <ul class="check" data-list="data">
+    <li><input type="checkbox">The database schema lives in the repo (<code>supabase db pull</code>), so you can rebuild it.</li>
+    <li><input type="checkbox">You have a backup you have actually restored once, or you know your plan's backup window.</li>
+    <li><input type="checkbox">Error tracking (Sentry or PostHog) is on, so you hear about crashes before users leave.</li>
+  </ul>
+
+  <h3>4. Launch basics: so people can find and share it</h3>
+  <ul class="check" data-list="seo">
+    <li><input type="checkbox">The page title says what the app does, not "Vite + React" or "Lovable App".</li>
+    <li><input type="checkbox">Meta description, a 1200×630 share image (og:image) and your own favicon.</li>
+    <li><input type="checkbox">robots.txt and a sitemap, submitted in Google Search Console and Bing Webmaster Tools.</li>
+    <li><input type="checkbox">A custom domain when you can afford one; it builds more trust than a platform subdomain.</li>
+    <li><input type="checkbox">Analytics, so you know where visitors come from and where they drop off.</li>
+  </ul>
+
+  <h3>5. Legal pages</h3>
+  <ul class="check" data-list="legal">
+    <li><input type="checkbox">A privacy policy page: what you collect, why, which services process it, how long you keep it, and how to ask for deletion. App stores and Google sign-in require one.</li>
+    <li><input type="checkbox">Terms of service, linked next to it.</li>
+    <li><input type="checkbox">If you have EU users, a cookie notice for non-essential cookies; if you collect data in India, the DPDP Act applies. This is not legal advice: check your own case.</li>
+  </ul>
+
+  <h3>6. App stores</h3>
+  <ul class="check" data-list="store">
+    <li><input type="checkbox">Google Play: new apps and updates must target Android 16 (API 36) since 31 Aug 2026. <a href="https://support.google.com/googleplay/android-developer/answer/11926878">Google's rule</a></li>
+    <li><input type="checkbox">Google Play: new personal developer accounts must run a closed test with at least 12 testers for 14 days before production. Recruit real testers early; buying fake ones breaks Play policy.</li>
+    <li><input type="checkbox">Google Play: the Data safety form matches what the app really collects.</li>
+    <li><input type="checkbox">Apple: the app does more than wrap a website (Guideline 4.2), isn't a near-copy of another app (4.3), and has no broken screens (2.1). <a href="https://developer.apple.com/app-store/review/guidelines/">Apple's guidelines</a></li>
+    <li><input type="checkbox">Every iOS permission prompt explains in a full sentence why it is needed.</li>
+  </ul>
+
+  <h3>7. The first users</h3>
+  <ul class="check" data-list="users">
+    <li><input type="checkbox">One sentence says who it is for and what problem it removes. If you can't write it, fix that before launching.</li>
+    <li><input type="checkbox">Watch one real person use it without helping. Fix where they get stuck.</li>
+    <li><input type="checkbox">Go where your users already ask for help (a forum, subreddit or group) and answer their questions; mention the app only where it truly answers one.</li>
+  </ul>
+
+  <div class="box"><b>Paste-ready prompt for your AI builder:</b> "Here is a safe-to-ship report for this project. Fix every critical and high finding exactly as described, without changing unrelated code, then list what you changed."</div>
+
+  <h2>Questions</h2>
+  <h3>Does it upload my code?</h3>
+  <p>No. It runs on your machine and only reads the folder you point it at. There is no telemetry.</p>
+  <h3>Is a clean result a guarantee?</h3>
+  <p>No. It is an automated check of your code, not a penetration test. A clean result means these checks passed; it does not prove the app is secure.</p>
+  <h3>Can I run it in CI?</h3>
+  <p>Yes: add <code>uses: Shivamkole1969/safe-to-ship@v0</code> to a GitHub Actions workflow. See the <a href="https://github.com/Shivamkole1969/safe-to-ship#run-it-on-every-pull-request-github-actions">README</a>.</p>
+
+  <footer>
+    safe-to-ship is free and open source (MIT). Not affiliated with Lovable, Bolt, Cursor, Replit, Supabase, Firebase, Google or Apple; product names are used only to describe compatibility.
+    <a href="https://github.com/Shivamkole1969/safe-to-ship/issues">Report a false alarm</a>.
+  </footer>
+</main>
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  btn.addEventListener('click', function () {
+    var t = document.getElementById('cmd').textContent;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }, function () {});
+  });
+  var KEY = 'sts-checklist';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  document.querySelectorAll('ul.check').forEach(function (ul) {
+    ul.querySelectorAll('input').forEach(function (box, i) {
+      var id = ul.getAttribute('data-list') + i;
+      box.checked = !!saved[id];
+      box.setAttribute('aria-label', box.parentNode.textContent.trim().slice(0, 80));
+      box.addEventListener('change', function () {
+        saved[id] = box.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

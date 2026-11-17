@@ -1,0 +1,25 @@
+name: 'safe-to-ship'
+description: 'Check an AI-built app for leaked keys, open Supabase/Firebase data, paid AI routes without auth, launch basics and app-store blockers.'
+branding:
+  icon: 'shield'
+  color: 'green'
+inputs:
+  path:
+    description: 'Folder to check'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Fail the job at this level or worse: critical, high, medium or low'
+    required: false
+    default: 'critical'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run safe-to-ship
+      shell: bash
+      run: |
+        set +e
+        node "${{ github.action_path }}/bin/cli.js" "${{ inputs.path }}" --no-color --fail-on "${{ inputs.fail-on }}" --report "$RUNNER_TEMP/safe-to-ship-report.md"
+        code=$?
+        cat "$RUNNER_TEMP/safe-to-ship-report.md" >> "$GITHUB_STEP_SUMMARY"
+        exit $code
